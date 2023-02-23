@@ -1,16 +1,18 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const connectDB = require('./config/connectDB');
 const Task = require('./models/taskModel');
-const taskRoutes = require('./routes/taskRoute')
+const taskRoutes = require('./routes/taskRoute');
 
 
 const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
-app.use(taskRoutes);
+app.use("/api/tasks" , taskRoutes);
 
 // const logger = (req, res, next) => {
 //     console.log("Middleware Running");
