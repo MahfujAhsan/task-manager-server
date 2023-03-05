@@ -52,7 +52,7 @@ const deleteTask = async (req, res) => {
         if (!task) {
             return res.status(404).json(`NO task with id: ${id}`)
         }
-        res.status(200).send("Task deleted successfully");
+        res.status(200).json(task);
     }
     catch (error) {
         res.status(500).json({ message: error.message });
@@ -65,7 +65,7 @@ const updateTask = async (req, res) => {
         const { id } = req.params;
         const task = await Task.findByIdAndUpdate(
             { _id: id },
-            req.body,
+            req.body.task,
             { new: true, runValidators: true }
         );
         if (!task) {
