@@ -78,29 +78,28 @@ const updateTask = async (req, res) => {
     }
 };
 
-// Create JWT token
-const getJWT = async (req, res) => {
-    try {
-        const email = req.query.email;
-        const query = { email: email };
+// // Create JWT token
+// const getJWT = async (req, res) => {
+//     try {
+//         const email = req.query.email;
+//         const query = { email: email };
 
-        const user = await User.findById(query);
+//         const user = await User.findById(query);
 
-        if (user) {
-            const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '24h' });
-        }
-        res.status(200).json({ accessToken: token })
-    }
-    catch {
-        res.status(500).json({ message: error.message });
-    }
-};
+//         if (user) {
+//             const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '24h' });
+//         }
+//         res.status(200).json({ accessToken: token })
+//     }
+//     catch {
+//         res.status(500).json({ message: error.message });
+//     }
+// };
 
 module.exports = {
     createTask,
     getTasks,
     getTask,
     deleteTask,
-    updateTask,
-    getJWT
+    updateTask
 }

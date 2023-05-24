@@ -15,16 +15,11 @@ const createUser = async (req, res) => {
 }
 
 const loginUser = async (req, res) => {
-    try {
-        const user = req.body;
+    const user = req.body;
 
-        const accessToken = jwt.sign(user, process.env.JWT_SECRET);
+    const accessToken = jwt.sign(user, process.env.JWT_SECRET);
 
-        res.status(200).json({accessToken});
-    }
-    catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+    res.json({ accessToken });
 
 }
 
