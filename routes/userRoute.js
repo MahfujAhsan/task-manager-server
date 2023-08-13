@@ -5,6 +5,6 @@ const { createUser, loginUser } = require("../controllers/userController.js");
 const { verifyJWT } = require('./verifyJWT');
 
 router.post("/", createUser);
-router.post("/login", verifyJWT, loginUser);
+router.post("/login", loginUser);
 
 module.exports = router;
